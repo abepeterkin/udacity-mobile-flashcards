@@ -27,7 +27,8 @@ const Stack = StackNavigator({
   initialRouteName: 'TabsView',
   cardStyle: {
     paddingTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight
-  }
+  },
+  headerMode: 'screen'
 })
 
 

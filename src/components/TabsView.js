@@ -28,6 +28,7 @@ const Tabs = TabNavigator({
 )
 
 class TabsView extends React.Component {
+  static navigationOptions = { header: null }
   render () {
     return (
       <Tabs screenProps={{stackNavigation: this.props.navigation}}/>
