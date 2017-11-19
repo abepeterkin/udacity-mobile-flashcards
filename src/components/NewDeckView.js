@@ -39,10 +39,10 @@ class NewDeckView extends React.Component {
     const { title } = this.state
     return (
       <KeyboardAvoidingView behavior='padding' style={styles.container}>
-        <Text> Title of new deck: </Text>
-        <TextInput value={title} onChangeText={this.onTitleChanged.bind(this)}></TextInput>
-        <TouchableHighlight style={styles.button} onPress={this.submit.bind(this)}> 
-          <Text>SUBMIT</Text>
+        <Text style={styles.title}> Title of new deck: </Text>
+        <TextInput placeholder="Enter new title here" style={styles.textInput} value={title} onChangeText={this.onTitleChanged.bind(this)}></TextInput>
+        <TouchableHighlight onPress={this.submit.bind(this)}> 
+          <Text style={[styles.button, styles.buttonBlue]} >SUBMIT</Text>
         </TouchableHighlight>
       </KeyboardAvoidingView>
     )

@@ -3,6 +3,7 @@ import { TabNavigator } from 'react-navigation'
 import { connect } from 'react-redux'
 import DeckListView from './DeckListView'
 import NewDeckView from './NewDeckView'
+import { blue } from '../styles/colors'
 
 const Tabs = TabNavigator({
   DeckListView: {
@@ -16,10 +17,15 @@ const Tabs = TabNavigator({
     navigationOptions: {
       tabBarLabel: 'New Deck'
     }
-  },
+  }
 }, {
-  initialRouteName: 'DeckListView',
-})
+    tabBarOptions: {
+      style: {
+        backgroundColor: blue
+      }
+    }
+  }
+)
 
 class HomeView extends React.Component {
   render () {

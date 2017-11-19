@@ -8,6 +8,7 @@ import QuizView from './QuizView'
 import { AppLoading } from 'expo'
 import { fetchDecks } from '../utils/storage'
 import { receiveDecks } from '../actions'
+import { Platform, StatusBar } from 'react-native'
 
 const Stack = StackNavigator({
   HomeView: {
@@ -23,7 +24,10 @@ const Stack = StackNavigator({
     screen: QuizView
   }
 }, {
-  initialRouteName: 'HomeView'
+  initialRouteName: 'HomeView',
+  cardStyle: {
+    paddingTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight
+  }
 })
 
 
@@ -33,7 +37,7 @@ class NavContainer extends React.Component {
     ready: false
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const { dispatch } = this.props
     fetchDecks().then(decks =>{
       dispatch(receiveDecks(decks))
@@ -45,7 +49,9 @@ class NavContainer extends React.Component {
   render () {
     const { ready } = this.state
     if (ready) {
-      return <Stack />
+      return (
+        <Stack />
+      )
     } else {
       return <AppLoading />
     }

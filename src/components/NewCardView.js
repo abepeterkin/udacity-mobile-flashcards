@@ -51,13 +51,13 @@ class NewCardView extends React.Component {
     const { question, answer} = this.state
     return (
       <KeyboardAvoidingView behavior='padding' style={styles.container}>
-        <Text>New card view</Text>
-        <Text>Question: </Text>
-        <TextInput value={question} onChangeText={this.onQuestionChanged.bind(this)}></TextInput>
-        <Text>Answer: </Text>
-        <TextInput value={answer} onChangeText={this.onAnswerChanged.bind(this)}></TextInput>
-        <TouchableHighlight style={styles.button} onPress={this.submit.bind(this)}> 
-          <Text>SUBMIT</Text>
+        <Text style={styles.title}>New Card</Text>
+        <Text style={{fontWeight: 'bold'}}>Question: </Text>
+        <TextInput placeholder="Enter question here" style={styles.textInput} value={question} onChangeText={this.onQuestionChanged.bind(this)}></TextInput>
+        <Text style={{fontWeight: 'bold'}}>Answer: </Text>
+        <TextInput placeholder="Enter answer here" style={styles.textInput} value={answer} onChangeText={this.onAnswerChanged.bind(this)}></TextInput>
+        <TouchableHighlight onPress={this.submit.bind(this)}> 
+          <Text style={[styles.button, styles.buttonBlue]}>SUBMIT</Text>
         </TouchableHighlight>
       </KeyboardAvoidingView>
     )

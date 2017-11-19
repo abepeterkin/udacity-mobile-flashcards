@@ -20,14 +20,15 @@ class DeckView extends React.Component {
   render() {
     const { deck } = this.props
     const numCards = deck.cards.length
+    numCards === 1 ? `${numCards} card` : `${numCards} cards`
     return (
       <View style={styles.container}>
-        <Text>Deck: {deck.title} ({numCards} cards)</Text>
-        <TouchableHighlight style={styles.button} onPress={this.navigateToNewCardView.bind(this)}>
-          <Text>Add New Card</Text>
+        <Text style={styles.title}>{deck.title} ({numCards === 1 ? `${numCards} card` : `${numCards} cards`})</Text>
+        <TouchableHighlight onPress={this.navigateToNewCardView.bind(this)}>
+          <Text style={[styles.button, styles.buttonBlue]}>Add New Card</Text>
         </TouchableHighlight>
-        <TouchableHighlight style={styles.button} onPress={this.navigateToQuizView.bind(this)}>
-          <Text>Start Quiz</Text>
+        <TouchableHighlight onPress={this.navigateToQuizView.bind(this)}>
+          <Text style={[styles.button, styles.buttonBlue]}>Start Quiz</Text>
         </TouchableHighlight>
       </View>
     )
