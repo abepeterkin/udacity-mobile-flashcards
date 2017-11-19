@@ -1,7 +1,7 @@
 import React from 'react'
 import { StackNavigator } from 'react-navigation'
 import { connect } from 'react-redux'
-import HomeView from './HomeView'
+import TabsView from './TabsView'
 import DeckView from './DeckView'
 import NewCardView from './NewCardView'
 import QuizView from './QuizView'
@@ -11,8 +11,8 @@ import { receiveDecks } from '../actions'
 import { Platform, StatusBar } from 'react-native'
 
 const Stack = StackNavigator({
-  HomeView: {
-    screen: HomeView
+  TabsView: {
+    screen: TabsView
   },
   DeckView: {
     screen: DeckView
@@ -24,14 +24,14 @@ const Stack = StackNavigator({
     screen: QuizView
   }
 }, {
-  initialRouteName: 'HomeView',
+  initialRouteName: 'TabsView',
   cardStyle: {
     paddingTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight
   }
 })
 
 
-class NavContainer extends React.Component {
+class StackView extends React.Component {
 
   state = {
     ready: false
@@ -39,9 +39,11 @@ class NavContainer extends React.Component {
 
   componentDidMount() {
     const { dispatch } = this.props
-    fetchDecks().then(decks =>{
+    fetchDecks()
+    .then((decks) => {
       dispatch(receiveDecks(decks))
-    }).then(() => this.setState({
+    })
+    .then(() => this.setState({
       ready: true
     }))
   }
@@ -58,4 +60,4 @@ class NavContainer extends React.Component {
   }
 }
 
-export default connect()(NavContainer)
+export default connect()(StackView)

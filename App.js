@@ -1,7 +1,7 @@
 import React from 'react'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
-import NavContainer from './src/components/NavContainer'
+import StackView from './src/components/StackView'
 import reducer from './src/reducers'
 import { setLocalNotification } from './src/utils/notifications'
 import { StatusBar } from 'react-native'
@@ -17,7 +17,7 @@ export default class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <NavContainer />
+        <StackView />
       </Provider>
     )
   }

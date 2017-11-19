@@ -27,7 +27,7 @@ const Tabs = TabNavigator({
   }
 )
 
-class HomeView extends React.Component {
+class TabsView extends React.Component {
   render () {
     return (
       <Tabs screenProps={{stackNavigation: this.props.navigation}}/>
@@ -35,4 +35,4 @@ class HomeView extends React.Component {
   }
 }
 
-export default connect()(HomeView)
+export default connect()(TabsView)

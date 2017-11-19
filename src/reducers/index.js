@@ -37,17 +37,6 @@ function decks(state = initialState, action) {
         ...state,
         ...action.deck
       }
-    case ADD_CARD:
-      const deck = state[action.deckName]
-      if (deck) {
-        deck.cards.push(action.card)
-        return {
-          ...state,
-          [action.deckName]: deck
-        }
-      } else {
-        return state
-      }
     default:
       return state;
   }

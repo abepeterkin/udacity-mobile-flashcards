@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { addCard } from '../actions'
+import { addDeck } from '../actions'
 import { NavigationActions } from 'react-navigation'
 import {
   Text,
@@ -32,18 +32,18 @@ class NewCardView extends React.Component {
 
   submit () {
     const { deck, dispatch, navigation } = this.props
-    console.warn(deck)
     const { title } = deck
     const { question, answer } = this.state
     const newCardArray = deck.cards.concat({question, answer})
     const newCard = { question, answer }
-    saveDeck(title, {
-        title,
-        cards: deck.cards.concat(newCard)
-      }
-    )
-    dispatch(addCard(title, newCard))
-    //TODO: navigates back before the previous screen has updated. Fix somehow?
+    const updatedDeck = {
+      title,
+      cards: deck.cards.concat(newCard)
+    }
+    saveDeck(title, updatedDeck)
+    dispatch(addDeck({
+      [updatedDeck.title]: updatedDeck
+    }))
     navigation.goBack()
   }
 
