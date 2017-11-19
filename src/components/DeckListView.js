@@ -50,7 +50,7 @@ class Deck extends React.Component {
         <TouchableHighlight 
         style={styles.deck} 
         onPress={this.navigateToDeckView.bind(this)}>
-          <Text style={{fontWeight: 'bold'}}> {title} ({numCards} cards)</Text>
+          <Text style={{fontWeight: 'bold'}}> {title} (({numCards === 1 ? `${numCards} card` : `${numCards} cards`}))</Text>
         </TouchableHighlight>
       </ Animated.View>
       )
