@@ -32,6 +32,10 @@ class Deck extends React.Component {
     animationValue: new Animated.Value(1),
   }
 
+  componentWillUnmount () {
+    this.state.animationValue.removeAllListeners()
+  }
+
   navigateToDeckView () {
     const { animationValue } = this.state
     Animated.sequence([
@@ -57,11 +61,7 @@ class Deck extends React.Component {
   }
 }
 
-function mapStateToProps (decks) {
-  return {
-    decks
-  }
-}
+const mapStateToProps = decks => ({ decks })
 
 export default connect(
   mapStateToProps,

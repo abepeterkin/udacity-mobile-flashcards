@@ -4,7 +4,8 @@ import {
   Text,
   KeyboardAvoidingView,
   TouchableHighlight,
-  TextInput
+  TextInput,
+  Keyboard
 } from 'react-native'
 import { saveDeck } from '../utils/storage'
 import { addDeck } from '../actions'
@@ -22,8 +23,7 @@ class NewDeckView extends React.Component {
   }
 
   submit () {
-    const { dispatch, navigation } = this.props
-    navigation.goBack()
+    const { dispatch, navigation, screenProps } = this.props
     const newDeck = {
       title: this.state.title,
       cards: []
@@ -32,7 +32,11 @@ class NewDeckView extends React.Component {
     dispatch(addDeck({
       [this.state.title]: newDeck
     }))
-    navigation.goBack()
+    Keyboard.dismiss()
+    screenProps.stackNavigation.navigate('DeckView', { title: this.state.title })
+    this.setState({
+      title: ''
+    })
   }
 
   render() {
